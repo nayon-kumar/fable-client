@@ -159,7 +159,7 @@ const RegisterForm = () => {
       </Button>
       <p className="text-center">
         Already have an account?{" "}
-        <Link href="/auth/signin" className="text-[#15A1BF] font-semibold">
+        <Link href="/login" className="text-[#15A1BF] font-semibold">
           Signin
         </Link>
       </p>
