@@ -190,7 +190,7 @@ export default function PrivacyPolicyPage() {
       <section className="relative overflow-hidden border-b border-white/10">
         <div className="absolute inset-0 bg-gradient-to-br from-violet-950/40 via-transparent to-transparent" />
 
-        <div className="relative mx-auto max-w-4xl px-4 py-20 text-center sm:px-6 lg:px-8">
+        <div className="relative mx-auto max-w-7xl px-4 py-20 text-center sm:px-6 lg:px-8">
           <span className="inline-block rounded-full border border-violet-500/30 bg-violet-500/10 px-4 py-1.5 text-sm font-medium text-violet-300">
             Legal
           </span>
@@ -211,12 +211,14 @@ export default function PrivacyPolicyPage() {
       </section>
 
       {/* Content */}
-      <section className="mx-auto max-w-4xl px-4 py-16 sm:px-6 lg:px-8">
-        <div className="space-y-6">
+      <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+        <div className="grid gap-6 lg:grid-cols-2">
           {sections.map(({ icon: Icon, title, body }) => (
             <div
               key={title}
-              className="rounded-2xl border border-white/10 bg-white/5 p-6 transition hover:border-violet-500/40 sm:p-8"
+              className={`rounded-2xl border border-white/10 bg-white/5 p-6 transition hover:border-violet-500/40 sm:p-8 ${
+                title === "8. Contact Us" ? "lg:col-span-2" : ""
+              }`}
             >
               <div className="flex items-center gap-4">
                 <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-violet-600/20 text-lg text-violet-400">
