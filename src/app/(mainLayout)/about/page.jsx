@@ -175,7 +175,7 @@ export default function AboutPage() {
         <div className="text-center">
           <h2 className="text-3xl font-bold md:text-4xl">Built for Everyone</h2>
           <p className="mx-auto mt-4 max-w-2xl text-gray-400">
-            Whether you're here to read, write, or manage the platform, Fable
+            Whether you&apos;re here to read, write, or manage the platform, Fable
             has a place for you.
           </p>
         </div>

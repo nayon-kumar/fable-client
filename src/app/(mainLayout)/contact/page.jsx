@@ -75,7 +75,7 @@ export default function ContactPage() {
           </span>
 
           <h1 className="mx-auto mt-6 max-w-2xl text-4xl font-bold leading-tight md:text-5xl">
-            We'd love to hear from you
+            We&apos;d love to hear from you
           </h1>
 
           <p className="mx-auto mt-6 max-w-xl text-lg text-gray-300">
@@ -111,7 +111,7 @@ export default function ContactPage() {
           <div className="lg:col-span-2">
             <h2 className="text-2xl font-bold md:text-3xl">Send us a message</h2>
             <p className="mt-2 text-gray-400">
-              Fill out the form below and we'll respond within 1–2 business
+              Fill out the form below and we&apos;ll respond within 1–2 business
               days.
             </p>
 

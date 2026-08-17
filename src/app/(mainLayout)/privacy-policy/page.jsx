@@ -200,7 +200,7 @@ export default function PrivacyPolicyPage() {
           </h1>
 
           <p className="mx-auto mt-6 max-w-xl text-lg text-gray-300">
-            Your trust matters to us. Here's how Fable collects, uses, and
+            Your trust matters to us. Here&apos;s how Fable collects, uses, and
             protects your information.
           </p>
 
