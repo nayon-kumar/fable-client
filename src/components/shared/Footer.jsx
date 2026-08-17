@@ -1,7 +1,13 @@
 "use client";
 
 import Link from "next/link";
-import { FaFacebookF, FaTwitter, FaInstagram, FaGithub } from "react-icons/fa";
+import {
+  FaFacebookF,
+  FaTwitter,
+  FaInstagram,
+  FaGithub,
+  FaBookOpen,
+} from "react-icons/fa";
 
 export default function Footer() {
   return (
@@ -11,8 +17,8 @@ export default function Footer() {
           {/* Brand */}
           <div>
             <div className="mb-4 flex items-center gap-3">
-              <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-slate-700 to-slate-500 text-xl font-bold text-white">
-                F
+              <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-violet-600 to-indigo-600 text-xl text-white shadow-lg shadow-violet-500/30">
+                <FaBookOpen />
               </div>
 
               <h2 className="text-2xl font-bold text-white">Fable</h2>

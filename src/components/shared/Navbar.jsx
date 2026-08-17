@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { HiOutlineMenuAlt3, HiOutlineX } from "react-icons/hi";
+import { FaBookOpen } from "react-icons/fa";
 import { useState } from "react";
 
 export default function Navbar() {
@@ -22,8 +23,8 @@ export default function Navbar() {
       <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-3">
-          <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-slate-700 to-slate-500 text-xl font-bold text-white shadow-lg">
-            F
+          <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-violet-600 to-indigo-600 text-xl text-white shadow-lg shadow-violet-500/30">
+            <FaBookOpen />
           </div>
 
           <span className="text-2xl font-bold text-white">Fable</span>
