@@ -48,10 +48,6 @@ export default function Navbar() {
             ))}
           </ul>
 
-          <button className="rounded-full border border-white/10 bg-white/5 px-8 py-3 text-white transition hover:bg-white/10">
-            Browse Books
-          </button>
-
           <div className="h-8 w-px bg-white/10" />
 
           <Link
