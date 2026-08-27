@@ -1,8 +1,7 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import Navbar from "@/components/shared/Navbar";
-import Footer from "@/components/shared/Footer";
 import { Toaster } from "react-hot-toast";
+import { AuthProvider } from "@/context/AuthContext";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -15,7 +14,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "Home - Fabel",
+  title: "Fable - Ebook Sharing Platform",
   description:
     "Fable is a digital platform that connects ebook lovers, readers, and collectors with talented writers. The platform allows users to browse, discover, and read original ebooks. Writers can upload and manage their creations after a one-time verification payment, while an admin oversees the entire system.",
 };
@@ -26,11 +25,21 @@ export default function RootLayout({ children }) {
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body suppressHydrationWarning className="min-h-full flex flex-col">
-        <Navbar />
-        {children}
-        <Footer />
-        <Toaster position="bottom-center" reverseOrder={false} />
+      <body suppressHydrationWarning className="min-h-full flex flex-col bg-[#050816]">
+        <AuthProvider>
+          {children}
+          <Toaster
+            position="bottom-center"
+            reverseOrder={false}
+            toastOptions={{
+              style: {
+                background: "#151521",
+                color: "#fff",
+                border: "1px solid rgba(255,255,255,0.1)",
+              },
+            }}
+          />
+        </AuthProvider>
       </body>
     </html>
   );
