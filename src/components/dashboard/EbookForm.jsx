@@ -104,9 +104,11 @@ export default function EbookForm({ mode = "add", ebookId, initialValues }) {
             onChange={(e) => set({ genre: e.target.value })}
             className={`${inputClass} mt-2`}
           >
-            <option value="">Select a genre</option>
+            <option value="" className="bg-gray-900 text-white">
+              Select a genre
+            </option>
             {genres.map((g) => (
-              <option key={g.name} value={g.name}>
+              <option key={g.name} value={g.name} className="bg-gray-900 text-white">
                 {g.name}
               </option>
             ))}

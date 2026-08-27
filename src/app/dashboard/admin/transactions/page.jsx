@@ -72,9 +72,15 @@ function Transactions() {
           />
         </div>
         <select value={type} onChange={(e) => setType(e.target.value)} className={`${inputClass} sm:w-48`}>
-          <option value="">All Types</option>
-          <option value="purchase">Ebook Purchase</option>
-          <option value="publishing_fee">Writer Verification</option>
+          <option value="" className="bg-gray-900 text-white">
+            All Types
+          </option>
+          <option value="purchase" className="bg-gray-900 text-white">
+            Ebook Purchase
+          </option>
+          <option value="publishing_fee" className="bg-gray-900 text-white">
+            Writer Verification
+          </option>
         </select>
       </div>
 

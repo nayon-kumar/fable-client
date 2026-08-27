@@ -6,6 +6,8 @@ import { genres } from "@/config/genres";
 const inputClass =
   "rounded-xl border border-white/10 bg-white/5 px-4 py-2.5 text-white outline-none placeholder:text-gray-500 transition focus:border-violet-500";
 
+const optionClass = "bg-gray-900 text-white";
+
 export default function EbookFilters({ filters, onChange, onReset, resultCount }) {
   const set = (patch) => onChange({ ...filters, ...patch });
 
@@ -31,9 +33,11 @@ export default function EbookFilters({ filters, onChange, onReset, resultCount }
           onChange={(e) => set({ genre: e.target.value })}
           className={`${inputClass} lg:w-44`}
         >
-          <option value="">All Genres</option>
+          <option value="" className={optionClass}>
+            All Genres
+          </option>
           {genres.map((g) => (
-            <option key={g.name} value={g.name}>
+            <option key={g.name} value={g.name} className={optionClass}>
               {g.name}
             </option>
           ))}
@@ -64,9 +68,15 @@ export default function EbookFilters({ filters, onChange, onReset, resultCount }
           onChange={(e) => set({ availability: e.target.value })}
           className={`${inputClass} lg:w-40`}
         >
-          <option value="">All Availability</option>
-          <option value="available">Available</option>
-          <option value="sold">Sold</option>
+          <option value="" className={optionClass}>
+            All Availability
+          </option>
+          <option value="available" className={optionClass}>
+            Available
+          </option>
+          <option value="sold" className={optionClass}>
+            Sold
+          </option>
         </select>
 
         <select
@@ -74,9 +84,15 @@ export default function EbookFilters({ filters, onChange, onReset, resultCount }
           onChange={(e) => set({ sort: e.target.value })}
           className={`${inputClass} lg:w-44`}
         >
-          <option value="newest">Newest First</option>
-          <option value="price_asc">Price: Low to High</option>
-          <option value="price_desc">Price: High to Low</option>
+          <option value="newest" className={optionClass}>
+            Newest First
+          </option>
+          <option value="price_asc" className={optionClass}>
+            Price: Low to High
+          </option>
+          <option value="price_desc" className={optionClass}>
+            Price: High to Low
+          </option>
         </select>
 
         {hasActiveFilters && (

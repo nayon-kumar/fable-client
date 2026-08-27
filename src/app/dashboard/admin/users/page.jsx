@@ -108,10 +108,18 @@ function ManageUsers() {
           />
         </div>
         <select value={role} onChange={(e) => setRole(e.target.value)} className={`${inputClass} sm:w-44`}>
-          <option value="">All Roles</option>
-          <option value="user">Reader</option>
-          <option value="writer">Writer</option>
-          <option value="admin">Admin</option>
+          <option value="" className="bg-gray-900 text-white">
+            All Roles
+          </option>
+          <option value="user" className="bg-gray-900 text-white">
+            Reader
+          </option>
+          <option value="writer" className="bg-gray-900 text-white">
+            Writer
+          </option>
+          <option value="admin" className="bg-gray-900 text-white">
+            Admin
+          </option>
         </select>
       </div>
 
@@ -168,9 +176,15 @@ function ManageUsers() {
                           onChange={(e) => handleRoleChange(u._id, e.target.value)}
                           className="rounded-lg border border-white/10 bg-[#0b0b14] px-2.5 py-1.5 text-xs font-medium text-white outline-none focus:border-violet-500 disabled:cursor-not-allowed disabled:opacity-50"
                         >
-                          <option value="user">Reader</option>
-                          <option value="writer">Writer</option>
-                          <option value="admin">Admin</option>
+                          <option value="user" className="bg-gray-900 text-white">
+                            Reader
+                          </option>
+                          <option value="writer" className="bg-gray-900 text-white">
+                            Writer
+                          </option>
+                          <option value="admin" className="bg-gray-900 text-white">
+                            Admin
+                          </option>
                         </select>
                       </Td>
                       <Td>{u.createdAt ? new Date(u.createdAt).toLocaleDateString() : "—"}</Td>

@@ -106,9 +106,11 @@ function ManageEbooksAdmin() {
           />
         </div>
         <select value={genre} onChange={(e) => setGenre(e.target.value)} className={`${inputClass} sm:w-44`}>
-          <option value="">All Genres</option>
+          <option value="" className="bg-gray-900 text-white">
+            All Genres
+          </option>
           {genres.map((g) => (
-            <option key={g.name} value={g.name}>
+            <option key={g.name} value={g.name} className="bg-gray-900 text-white">
               {g.name}
             </option>
           ))}
