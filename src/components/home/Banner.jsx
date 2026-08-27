@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { motion, AnimatePresence } from "framer-motion";
 import { FaArrowRight } from "react-icons/fa";
 
 const slides = [
@@ -61,20 +62,32 @@ export default function Banner() {
           {/* Content */}
           <div className="absolute inset-0 flex items-center">
             <div className="max-w-6xl mx-auto px-6 text-white text-center">
-              <h1 className="text-4xl md:text-6xl font-bold leading-tight">
-                {slide.title}
-              </h1>
+              <AnimatePresence mode="wait">
+                {index === current && (
+                  <motion.div
+                    key={slide.id}
+                    initial={{ opacity: 0, y: 24 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -12 }}
+                    transition={{ duration: 0.6, ease: "easeOut" }}
+                  >
+                    <h1 className="text-4xl md:text-6xl font-bold leading-tight">
+                      {slide.title}
+                    </h1>
 
-              <p className="mt-4 text-lg md:text-xl text-gray-200">
-                {slide.desc}
-              </p>
+                    <p className="mt-4 text-lg md:text-xl text-gray-200">
+                      {slide.desc}
+                    </p>
 
-              <Link
-                href="/browse-ebooks"
-                className="inline-flex items-center gap-2 mt-6 px-6 py-3 bg-indigo-600 hover:bg-indigo-700 transition rounded-lg text-white font-medium"
-              >
-                Browse Ebooks <FaArrowRight />
-              </Link>
+                    <Link
+                      href="/browse-ebooks"
+                      className="inline-flex items-center gap-2 mt-6 px-6 py-3 bg-indigo-600 hover:bg-indigo-700 transition rounded-lg text-white font-medium"
+                    >
+                      Browse Ebooks <FaArrowRight />
+                    </Link>
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </div>
           </div>
         </div>

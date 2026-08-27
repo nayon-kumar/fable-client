@@ -1,6 +1,8 @@
 "use client";
 
 import { authClient } from "@/lib/auth-client";
+import { useAuth } from "@/context/AuthContext";
+import { api, ApiError } from "@/lib/api";
 import { Check } from "@gravity-ui/icons";
 import {
   Button,
@@ -13,19 +15,29 @@ import {
 } from "@heroui/react";
 import Link from "next/link";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import { FcGoogle } from "react-icons/fc";
 import toast from "react-hot-toast";
-import { redirect } from "next/navigation";
 import { Description, Radio, RadioGroup } from "@heroui/react";
 
 const RegisterForm = () => {
   const [isPending, setIsPending] = useState(false);
-  const [role, setRole] = useState("reader");
+  const [googlePending, setGooglePending] = useState(false);
+  const [role, setRole] = useState("user");
+  const { register } = useAuth();
+  const router = useRouter();
 
   const handleGoogle = async () => {
-    const data = await authClient.signIn.social({
-      provider: "google",
-    });
+    setGooglePending(true);
+    try {
+      await authClient.signIn.social({
+        provider: "google",
+        callbackURL: "/auth/callback",
+      });
+    } catch {
+      toast.error("Could not start Google sign-in. Please try again.");
+      setGooglePending(false);
+    }
   };
 
   const onSubmit = async (e) => {
@@ -35,23 +47,47 @@ const RegisterForm = () => {
       const formData = new FormData(e.target);
       const signUpData = Object.fromEntries(formData.entries());
 
-      const { data, error } = await authClient.signUp.email({
+      if (signUpData.password !== signUpData.confirmPassword) {
+        toast.error("Passwords do not match");
+        setIsPending(false);
+        return;
+      }
+
+      const { token } = await register({
         name: signUpData.name,
         email: signUpData.email,
         password: signUpData.password,
-        role: role,
+        role: "user",
       });
-      if (data) {
-        await authClient.signOut();
-        toast.success("Register Successfully!");
-        redirect("/login");
-      } else {
-        toast.error(`${error.message}`);
+
+      if (role === "writer") {
+        try {
+          const { url } = await api.post(
+            "/payments/checkout/writer-verification",
+            {},
+            { token },
+          );
+          toast.success("Account created! Complete verification to start publishing.");
+          window.location.href = url;
+          return;
+        } catch {
+          toast.success(
+            "Account created! You can complete writer verification anytime from your dashboard.",
+          );
+          router.push("/dashboard/user");
+          return;
+        }
       }
+
+      toast.success("Registered successfully!");
+      router.push("/");
+    } catch (err) {
+      toast.error(err instanceof ApiError ? err.message : "Registration failed. Please try again.");
     } finally {
       setIsPending(false);
     }
   };
+
   return (
     <div className="flex w-full p-10 rounded-2xl shadow bg-[#151516] flex-col gap-4">
       <Form onSubmit={onSubmit} className="space-y-4">
@@ -78,12 +114,12 @@ const RegisterForm = () => {
 
         <TextField
           isRequired
-          minLength={6}
+          minLength={8}
           name="password"
           type="password"
           validate={(value) => {
             if (value.length < 8) {
-              return "Password must be at least 6 characters";
+              return "Password must be at least 8 characters";
             }
             if (!/[A-Z]/.test(value)) {
               return "Password must contain at least one uppercase letter";
@@ -100,15 +136,21 @@ const RegisterForm = () => {
           <FieldError />
         </TextField>
 
+        <TextField isRequired minLength={8} name="confirmPassword" type="password">
+          <Label className="text-white">Confirm Password</Label>
+          <Input placeholder="Re-enter your password" />
+          <FieldError />
+        </TextField>
+
         <div className="flex flex-col gap-4">
           <Label className="text-white">Select Role</Label>
           <RadioGroup
-            defaultValue="reader"
+            defaultValue="user"
             name="role"
             orientation="horizontal"
             onChange={(value) => setRole(value)}
           >
-            <Radio value="reader">
+            <Radio value="user">
               <Radio.Control>
                 <Radio.Indicator />
               </Radio.Control>
@@ -125,6 +167,12 @@ const RegisterForm = () => {
               </Radio.Content>
             </Radio>
           </RadioGroup>
+          {role === "writer" && (
+            <Description className="text-gray-400 text-sm">
+              Writers complete a one-time verification payment right after
+              signing up.
+            </Description>
+          )}
         </div>
 
         <div className="flex gap-2">
@@ -152,11 +200,16 @@ const RegisterForm = () => {
       </div>
       <Button
         onClick={handleGoogle}
+        isDisabled={googlePending}
         className="w-full bg-white text-black rounded-md"
       >
-        <FcGoogle />
+        {googlePending ? <Spinner color="current" size="sm" /> : <FcGoogle />}
         Continue with Google
       </Button>
+      <p className="text-xs text-center text-gray-500">
+        Google sign-up starts as a Reader account — upgrade to Writer anytime
+        from your dashboard.
+      </p>
       <p className="text-center">
         Already have an account?{" "}
         <Link href="/login" className="text-[#15A1BF] font-semibold">
