@@ -147,24 +147,6 @@ const sections = [
     ),
   },
   {
-    icon: FaUserEdit,
-    title: "7. Your Rights & Choices",
-    body: (
-      <>
-        <p>You have the right to:</p>
-        <ul className="mt-3 list-disc space-y-2 pl-5">
-          <li>Access and review the personal information on your profile.</li>
-          <li>Request correction of inaccurate account details.</li>
-          <li>
-            Request deletion of your account and associated data, subject to
-            transaction records we are required to retain.
-          </li>
-          <li>Unsubscribe from newsletter emails at any time.</li>
-        </ul>
-      </>
-    ),
-  },
-  {
     icon: FaEnvelope,
     title: "8. Contact Us",
     body: (
