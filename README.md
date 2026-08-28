@@ -12,6 +12,19 @@ platform.
 
 👉 https://fable-client-olive.vercel.app
 
+### 🔐 Demo Credentials
+
+Use the following demo credentials to explore the different roles and dashboards available in the **Fable** platform.
+
+> ⚠️ **Note:** These accounts are provided for demonstration purposes only. Please do not change or delete the demo data.
+
+### 🛡️ Admin Account
+
+| Credential   | Details           |
+| ------------ | ----------------- |
+| **Email**    | `admin@fable.com` |
+| **Password** | `Admin@123`       |
+
 ---
 
 ## 🚀 Key Features
