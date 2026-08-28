@@ -74,6 +74,8 @@ used by BetterAuth to store Google OAuth accounts/sessions; all application
 data (users, ebooks, purchases, transactions) lives in the Fable API's own
 database.
 
+---
+
 ## 🟢 Running Locally
 
 ```bash
