@@ -125,12 +125,11 @@ function ManageEbooksAdmin() {
                 <Th>Ebook</Th>
                 <Th>Writer</Th>
                 <Th>Price</Th>
-                <Th>Availability</Th>
                 <Th>Actions</Th>
               </tr>
             </Thead>
             <tbody>
-              <TableSkeleton rows={5} columns={5} />
+              <TableSkeleton rows={5} columns={4} />
             </tbody>
           </TableWrapper>
         ) : ebooks.length ? (
@@ -141,7 +140,6 @@ function ManageEbooksAdmin() {
                   <Th>Ebook</Th>
                   <Th>Writer</Th>
                   <Th>Price</Th>
-                  <Th>Availability</Th>
                   <Th>Actions</Th>
                 </tr>
               </Thead>
@@ -159,9 +157,6 @@ function ManageEbooksAdmin() {
                     </Td>
                     <Td>{e.writerName}</Td>
                     <Td>${e.price}</Td>
-                    <Td>
-                      <Badge variant={e.sold ? "danger" : "info"}>{e.sold ? "Sold" : "Available"}</Badge>
-                    </Td>
                     <Td>
                       <div className="flex items-center gap-2">
                         <button

@@ -57,7 +57,7 @@ const RegisterForm = () => {
         name: signUpData.name,
         email: signUpData.email,
         password: signUpData.password,
-        role: "user",
+        role,
       });
 
       if (role === "writer") {
@@ -74,7 +74,7 @@ const RegisterForm = () => {
           toast.success(
             "Account created! You can complete writer verification anytime from your dashboard.",
           );
-          router.push("/dashboard/user");
+          router.push("/dashboard/writer");
           return;
         }
       }

@@ -12,7 +12,7 @@ export default function EbookFilters({ filters, onChange, onReset, resultCount }
   const set = (patch) => onChange({ ...filters, ...patch });
 
   const hasActiveFilters =
-    filters.search || filters.genre || filters.minPrice || filters.maxPrice || filters.availability;
+    filters.search || filters.genre || filters.minPrice || filters.maxPrice;
 
   return (
     <div className="rounded-2xl border border-white/10 bg-white/5 p-5">
@@ -62,22 +62,6 @@ export default function EbookFilters({ filters, onChange, onReset, resultCount }
             className={`${inputClass} w-24`}
           />
         </div>
-
-        <select
-          value={filters.availability}
-          onChange={(e) => set({ availability: e.target.value })}
-          className={`${inputClass} lg:w-40`}
-        >
-          <option value="" className={optionClass}>
-            All Availability
-          </option>
-          <option value="available" className={optionClass}>
-            Available
-          </option>
-          <option value="sold" className={optionClass}>
-            Sold
-          </option>
-        </select>
 
         <select
           value={filters.sort}

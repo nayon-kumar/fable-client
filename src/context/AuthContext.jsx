@@ -11,6 +11,12 @@ const TOKEN_KEY = "fable_token";
 function redirectPathForRole(role) {
   if (role === "writer") return "/dashboard/writer";
   if (role === "admin") return "/dashboard/admin";
+  return "/dashboard/user";
+}
+
+function loginRedirectPath(role) {
+  if (role === "writer") return "/dashboard/writer";
+  if (role === "admin") return "/dashboard/admin";
   return "/";
 }
 
@@ -58,14 +64,14 @@ export function AuthProvider({ children }) {
   const login = async ({ email, password }) => {
     const data = await api.post("/auth/login", { email, password });
     persistAuth(data.token, data.user);
-    router.push(redirectPathForRole(data.user.role));
+    router.push(loginRedirectPath(data.user.role));
     return data;
   };
 
   const loginWithGoogle = async ({ name, email, photo }) => {
     const data = await api.post("/auth/google", { name, email, photo });
     persistAuth(data.token, data.user);
-    router.push(redirectPathForRole(data.user.role));
+    router.push(loginRedirectPath(data.user.role));
     return data;
   };
 
@@ -78,7 +84,7 @@ export function AuthProvider({ children }) {
     } catch {
       // no BetterAuth session to clear — ignore
     }
-    router.push("/");
+    router.push("/login");
   };
 
   const refreshUser = useCallback(() => {

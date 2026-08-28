@@ -129,16 +129,6 @@ export default function EbookDetailsClient({ ebook }) {
         </button>
       );
     }
-    if (ebook.sold) {
-      return (
-        <button
-          disabled
-          className="w-full cursor-not-allowed rounded-full bg-white/10 px-6 py-3.5 text-center font-semibold text-gray-400"
-        >
-          Sold Out
-        </button>
-      );
-    }
     return (
       <button
         onClick={handlePurchase}
@@ -176,9 +166,6 @@ export default function EbookDetailsClient({ ebook }) {
           <div>
             <div className="flex flex-wrap items-center gap-2">
               <Badge variant="violet">{ebook.genre}</Badge>
-              <Badge variant={ebook.sold ? "danger" : "success"}>
-                {ebook.sold ? "Sold" : "Available"}
-              </Badge>
             </div>
 
             <h1 className="mt-4 text-3xl font-bold leading-tight md:text-4xl">

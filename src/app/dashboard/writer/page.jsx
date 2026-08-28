@@ -87,12 +87,11 @@ function ManageEbooks() {
                 <Th>Ebook</Th>
                 <Th>Price</Th>
                 <Th>Status</Th>
-                <Th>Availability</Th>
                 <Th>Actions</Th>
               </tr>
             </Thead>
             <tbody>
-              <TableSkeleton rows={4} columns={5} />
+              <TableSkeleton rows={4} columns={4} />
             </tbody>
           </TableWrapper>
         ) : ebooks.length ? (
@@ -102,7 +101,6 @@ function ManageEbooks() {
                 <Th>Ebook</Th>
                 <Th>Price</Th>
                 <Th>Status</Th>
-                <Th>Availability</Th>
                 <Th>Actions</Th>
               </tr>
             </Thead>
@@ -123,9 +121,6 @@ function ManageEbooks() {
                     <Badge variant={e.status === "published" ? "success" : "neutral"}>
                       {e.status}
                     </Badge>
-                  </Td>
-                  <Td>
-                    <Badge variant={e.sold ? "danger" : "info"}>{e.sold ? "Sold" : "Available"}</Badge>
                   </Td>
                   <Td>
                     <div className="flex items-center gap-2">

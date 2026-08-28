@@ -25,11 +25,6 @@ export default function EbookCard({ ebook, index = 0 }) {
             className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
             loading="lazy"
           />
-          {ebook.sold && (
-            <span className="absolute right-3 top-3">
-              <Badge variant="danger">Sold</Badge>
-            </span>
-          )}
           {ebook.genre && (
             <span className="absolute left-3 top-3">
               <Badge variant="violet">{ebook.genre}</Badge>

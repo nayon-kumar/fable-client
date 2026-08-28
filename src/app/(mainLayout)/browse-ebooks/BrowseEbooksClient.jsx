@@ -17,7 +17,6 @@ const emptyFilters = {
   genre: "",
   minPrice: "",
   maxPrice: "",
-  availability: "",
   sort: "newest",
 };
 
@@ -30,7 +29,6 @@ export default function BrowseEbooksClient() {
     genre: searchParams.get("genre") || "",
     minPrice: searchParams.get("minPrice") || "",
     maxPrice: searchParams.get("maxPrice") || "",
-    availability: searchParams.get("availability") || "",
     sort: searchParams.get("sort") || "newest",
   }));
   const [page, setPage] = useState(Number(searchParams.get("page")) || 1);
@@ -65,7 +63,6 @@ export default function BrowseEbooksClient() {
     filters.genre,
     filters.minPrice,
     filters.maxPrice,
-    filters.availability,
     filters.sort,
   ]);
 
