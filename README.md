@@ -74,7 +74,7 @@ Create a `.env` file in the project root (see `.env.example`):
 MONGODB_URI=your_mongodb_connection_string
 AUTH_DB_NAME=fable_auth
 BETTER_AUTH_SECRET=replace_with_a_long_random_secret
-NEXT_PUBLIC_BETTER_AUTH_URL=http://localhost:3000
+BETTER_AUTH_URL=http://localhost:3000
 GOOGLE_CLIENT_ID=your_google_client_id
 GOOGLE_CLIENT_SECRET=your_google_client_secret
 NEXT_PUBLIC_API_URL=http://localhost:5000/api
